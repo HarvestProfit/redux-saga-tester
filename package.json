@@ -1,8 +1,8 @@
 {
-  "name": "redux-saga-tester",
+  "name": "@harvest-profit/redux-saga-tester",
   "version": "1.0.1",
   "description": "Full redux environment testing helper for redux-saga",
-  "main": "src/SagaTester.js",
+  "main": "dist/SagaTester.js",
   "scripts": {
     "lint": "eslint './src/**/*.js' './test/**/*.js' './examples/**/*.js'",
     "examples": "mocha --compilers js:babel-register './examples/**/*.js'",
@@ -15,18 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wix/redux-saga-tester.git"
+    "url": "git+https://github.com/HarvestProfit/redux-saga-tester.git"
   },
-  "keywords": [
-    "redux-saga",
-    "test"
-  ],
   "author": "Guy Benron",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wix/redux-saga-tester/issues"
+    "url": "https://github.com/HarvestProfit/redux-saga-tester/issues"
   },
-  "homepage": "https://github.com/wix/redux-saga-tester#readme",
+  "homepage": "https://github.com/HarvestProfit/redux-saga-tester#readme",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.24.1",
@@ -43,7 +39,7 @@
     "nock": "^9.0.13",
     "node-fetch": "^1.6.3",
     "redux": "^3.6.0",
-    "redux-saga": "^0.15.3",
+    "redux-saga": "^1.0.0-beta.1",
     "wnpm-ci": "^6.2.52"
   },
   "publishConfig": {

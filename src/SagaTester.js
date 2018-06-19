@@ -103,13 +103,22 @@ export default class SagaIntegrationTester {
     }
 
     run(sagas = [], ...args) {
-        return this.start(sagas, ...args).task.toPromise();
+        const task =  this.start(sagas, ...args);
+        return (task.done == null) ? task.toPromise() : task.done;
     }
 
     start(sagas = [], ...args) {
         const task = this.sagaMiddleware.run(sagas, ...args);
-        task.toPromise().then(() => this._verifyAwaitedActionsCalled());
-        task.toPromise().catch(e => this._handleRootSagaException(e));
+        const verifyAwaitedActionsCalled = () => this._verifyAwaitedActionsCalled();
+        const catchException = (e) => this._handleRootSagaException(e);
+
+        if (task.done == null) {
+            task.toPromise().then(verifyAwaitedActionsCalled);
+            task.toPromise().catch(catchException);
+        } else {
+            task.done.then(verifyAwaitedActionsCalled);
+            task.done.catch(catchException);
+        }
         return task;
     }
 
